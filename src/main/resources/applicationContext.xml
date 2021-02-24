@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="exempt_no_imported" class="com.sales.model.TaxType" factory-method="valueOf">
+	    <constructor-arg value="EXEMPT_NO_IMPORTED" />
+	</bean>
+	<bean id="exempt_imported" class="com.sales.model.TaxType" factory-method="valueOf">
+	    <constructor-arg value="EXEMPT_IMPORTED" />
+	</bean>
+	<bean id="no_exempt_no_imported" class="com.sales.model.TaxType" factory-method="valueOf">
+	    <constructor-arg value="NO_EXEMPT_NO_IMPORTED" />
+	</bean>
+	<bean id="no_exempt_imported" class="com.sales.model.TaxType" factory-method="valueOf">
+	    <constructor-arg value="NO_EXEMPT_IMPORTED" />
+	</bean>
+
+	<bean id="goods1" class="com.sales.model.Goods">
+		<property name="name" value="Book"></property>
+		<property name="price" value="12.49"></property>
+		<property name="taxType" ref="exempt_no_imported"></property>
+	</bean>
+	<bean id="goods2" class="com.sales.model.Goods">
+		<property name="name" value="Music CD"></property>
+		<property name="price" value="14.99"></property>
+		<property name="taxType" ref="no_exempt_no_imported"></property>
+	</bean>	
+	<bean id="goods3" class="com.sales.model.Goods">
+		<property name="name" value="Chocolate bar"></property>
+		<property name="price" value="0.85"></property>
+		<property name="taxType" ref="exempt_no_imported"></property>
+	</bean>		
+	
+	
+	<bean id="goods4" class="com.sales.model.Goods">
+		<property name="name" value="Imported box of chocolates"></property>
+		<property name="price" value="10.00"></property>
+		<property name="taxType" ref="exempt_imported"></property>
+	</bean>	
+	<bean id="goods5" class="com.sales.model.Goods">
+		<property name="name" value="Imported bottle of perfume"></property>
+		<property name="price" value="47.50"></property>
+		<property name="taxType" ref="no_exempt_imported"></property>
+	</bean>	
+	
+	
+	<bean id="goods6" class="com.sales.model.Goods">
+		<property name="name" value="Imported bottle of perfume"></property>
+		<property name="price" value="27.99"></property>
+		<property name="taxType" ref="no_exempt_imported"></property>
+	</bean>	
+	<bean id="goods7" class="com.sales.model.Goods">
+		<property name="name" value="Bottle of perfume"></property>
+		<property name="price" value="18.99"></property>
+		<property name="taxType" ref="no_exempt_no_imported"></property>
+	</bean>	
+	<bean id="goods8" class="com.sales.model.Goods">
+		<property name="name" value="Packet of headache pills"></property>
+		<property name="price" value="9.75"></property>
+		<property name="taxType" ref="exempt_no_imported"></property>
+	</bean>	
+	<bean id="goods9" class="com.sales.model.Goods">
+		<property name="name" value="Box of imported chocolates"></property>
+		<property name="price" value="11.25"></property>
+		<property name="taxType" ref="exempt_imported"></property>
+	</bean>			
+	
+	
+	<bean id="orderGoods1" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods1"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	<bean id="orderGoods2" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods2"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	<bean id="orderGoods3" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods3"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	
+	<bean id="orderGoods4" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods4"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	<bean id="orderGoods5" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods5"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	
+	<bean id="orderGoods6" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods6"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	<bean id="orderGoods7" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods7"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	<bean id="orderGoods8" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods8"></property>
+		<property name="quantity" value="1"></property>
+	</bean>	
+	<bean id="orderGoods9" class="com.sales.model.OrderGoods">
+		<property name="goods" ref="goods9"></property>
+		<property name="quantity" value="1"></property>
+	</bean>					
+			
+	
+	<bean id="shoppingCart1" class="com.sales.model.ShoppingCart">
+		<property name="listOrderGoods">
+			<list>
+				<ref bean="orderGoods1" />
+				<ref bean="orderGoods2" />
+				<ref bean="orderGoods3" />
+			</list>		
+		</property>
+	</bean>	
+	
+	<bean id="shoppingCart2" class="com.sales.model.ShoppingCart">
+		<property name="listOrderGoods">
+			<list>
+				<ref bean="orderGoods4" />
+				<ref bean="orderGoods5" />
+			</list>		
+		</property>
+	</bean>		
+	
+	<bean id="shoppingCart3" class="com.sales.model.ShoppingCart">
+		<property name="listOrderGoods">
+			<list>
+				<ref bean="orderGoods6" />
+				<ref bean="orderGoods7" />
+				<ref bean="orderGoods8" />
+				<ref bean="orderGoods9" />				
+			</list>		
+		</property>
+	</bean>		
+	
+</beans>
